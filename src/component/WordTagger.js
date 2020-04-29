@@ -27,7 +27,7 @@ function WordView() {
         if(action === 'ADD'){
             words.push(word);
         }else if(action === 'DELETE'){
-            words.filter(w => w !== words);
+            words = words.filter(w => w !== word);
         }
 
         map.set(tag, words);
