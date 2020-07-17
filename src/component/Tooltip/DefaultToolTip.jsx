@@ -37,10 +37,7 @@ line-height: 1.2;
 function DefaultTooltip(props) {
     return (
         <DefaultToolTip>
-            <div>
-                Select Tag!<br/>
-                {props.children}
-            </div>
+            {props.children}
         </DefaultToolTip>
     )
 }
