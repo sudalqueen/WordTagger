@@ -1,4 +1,5 @@
 import React,{ useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import TooltipContainer from './Tooltip/TooltipContainer';
 import DefaultTooltip from './Tooltip/DefaultToolTip';
@@ -85,17 +86,16 @@ function TagEditor(props) {
     };
 
     function taggingWord(tag) {
-        console.log(window.getSelection().getRangeAt(0))
-        const selectText = window.getSelection().toString();
+        const selection = window.getSelection();
+        const selectText = selection.toString();
 
-        const parentNode = window.getSelection().getRangeAt(0).startContainer.parentNode;
+        const parentNode = selection.getRangeAt(0).startContainer.parentNode;
         const taggedIndex = tags.findIndex(tag => tag.name === parentNode.id);
         let replace;
 
 
         if (taggedIndex > -1) {
-            replace = parentNode.innerHTML;
-            replaceSelection(replace, false);
+            replaceTaggedWord(parentNode);
             setTagMap(tag.name, selectText, 'DELETE');
         } else {
             replace = document.createElement('span');
@@ -124,6 +124,11 @@ function TagEditor(props) {
             }
             props.onChange(taggedInfo)
         }
+    }
+
+    function replaceTaggedWord(taggedNode) {
+        const replaceText = document.createTextNode(taggedNode.innerHTML);
+        taggedNode.parentNode.replaceChild(replaceText, taggedNode);
     }
 
     function replaceSelection(html, selectInserted) {
@@ -169,11 +174,11 @@ function TagEditor(props) {
 
     return (
         <div>
-            <form id="wysiwyg" onClick={onSelectText}>
-                <div id="input" ref={tagInputRef} onChange={onChange} contentEditable suppressContentEditableWarning>
+            <form className={props.formClassName || ""} onClick={onSelectText}>
+                <div className={props.divClassName || "input"} ref={tagInputRef} onChange={onChange} contentEditable suppressContentEditableWarning>
                     {text}
                 </div>
-                <textarea id="result" name="result"></textarea>
+                <textarea className="wordtag-result"></textarea>
             </form>
             {
                 showTooltip &&
@@ -181,8 +186,8 @@ function TagEditor(props) {
                     <Tooltip>
                         {
                             tags.map(tag =>
-                                <label key={tag.name + tag.color} htmlFor={tag.name}>
-                                    <input id={tag.name} type="checkbox" onChange={() => { taggingWord(tag) }} checked={tag.checked} />
+                                <label key={tag.name + tag.color} htmlFor={tag.name} className={props.labelClassName || ""}>
+                                    <input id={tag.name} type="checkbox" className={props.inputClassName || ""} onChange={() => { taggingWord(tag) }} checked={tag.checked} />
                                     {tag.name}
                                 </label>)
                         }
@@ -194,3 +199,15 @@ function TagEditor(props) {
 };
 
 export default TagEditor;
+
+TagEditor.propTypes = {
+    value: PropTypes.string.isRequired,
+    tags: PropTypes.array.isRequired,
+    formClassName: PropTypes.string,
+    divClassName: PropTypes.string,
+    labelClassName: PropTypes.string,
+    inputClassName: PropTypes.string,
+    customTooltip: PropTypes.elementType,
+    onChange: PropTypes.func,
+    onClickTag: PropTypes.func
+}
