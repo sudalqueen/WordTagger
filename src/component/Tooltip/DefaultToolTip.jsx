@@ -1,12 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ToolTip = styled.div`
-position: absolute;
-z-index: 2;
-cursor: pointer;
-left: ${props => props.x ? (props.x - 80)+"px" : "50%"};
-top: ${props => props.y ? (props.y + 5)+"px" : "10%"};
+const DefaultToolTip = styled.div`
 margin-bottom: 5px;
 padding: 7px;
 width: 160px;
@@ -39,12 +34,12 @@ line-height: 1.2;
 }
 `;
 
-function Tooltip(props) {
+function DefaultTooltip(props) {
     return (
-        <ToolTip x={props.x} y={props.y}>
+        <DefaultToolTip>
             {props.children}
-        </ToolTip>
+        </DefaultToolTip>
     )
 }
 
-export default Tooltip;
+export default DefaultTooltip;
