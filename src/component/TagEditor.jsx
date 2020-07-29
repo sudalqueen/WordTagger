@@ -4,10 +4,22 @@ import PropTypes from 'prop-types';
 import TooltipContainer from './Tooltip/TooltipContainer.jsx';
 import DefaultTooltip from './Tooltip/DefaultToolTip.jsx';
 
-import { getRandomColor } from '../utils';
+function getRandomColor() {
+    return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+}
 
-import '../style/Word.css';
-
+const Style = {
+    input: {
+        minHeight: "100px", 
+        borderRadius: "5px", 
+        border: "1px solid #ccc",
+        padding: "5px",
+        marginBottom: "1px"
+    },
+    textarea: {
+        display: "none"
+    }
+}
 function TagEditor(props) {
     const taggedWordsMap = new Map();
     const tagInputRef = useRef();
@@ -175,10 +187,10 @@ function TagEditor(props) {
     return (
         <div>
             <form className={props.formClassName || ""} onClick={onSelectText}>
-                <div className={props.divClassName || "input"} ref={tagInputRef} onChange={onChange} contentEditable suppressContentEditableWarning>
+                <div className={props.divClassName || "input"} style={props.divClassName ? {} : Style.input}ref={tagInputRef} onChange={onChange} contentEditable suppressContentEditableWarning>
                     {text}
                 </div>
-                <textarea className="wordtag-result"></textarea>
+                <textarea className="wordtag-result" style={Style.textarea}></textarea>
             </form>
             {
                 showTooltip &&

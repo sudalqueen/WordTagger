@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "description": "Tag Editor for Word Tagging",
   "main": "build/static/js/index.js",
-  "private": true,
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/sudalqueen/WordTagger"
   },
+  "files": [
+    "/build"
+  ],
   "author": "sudalqueen",
   "license": "MIT",
   "dependencies": {
@@ -58,15 +61,22 @@
     "react-dom": "^16.13.1",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
+    "rollup": "^2.23.0",
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.1.1",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
     "url-loader": "2.3.0",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -97,9 +107,16 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
     "html-loader": "^1.1.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.3",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3"
