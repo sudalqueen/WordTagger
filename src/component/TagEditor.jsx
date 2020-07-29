@@ -1,8 +1,8 @@
 import React,{ useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import TooltipContainer from './Tooltip/TooltipContainer';
-import DefaultTooltip from './Tooltip/DefaultToolTip';
+import TooltipContainer from './Tooltip/TooltipContainer.jsx';
+import DefaultTooltip from './Tooltip/DefaultToolTip.jsx';
 
 import { getRandomColor } from '../utils';
 
@@ -185,9 +185,9 @@ function TagEditor(props) {
                 <TooltipContainer x={tooltipPosition.x} y={tooltipPosition.y}>
                     <Tooltip>
                         {
-                            tags.map(tag =>
+                            tags.map((tag, index) =>
                                 <label key={tag.name + tag.color} htmlFor={tag.name} className={props.labelClassName || ""}>
-                                    <input id={tag.name} type="checkbox" className={props.inputClassName || ""} onChange={() => { taggingWord(tag) }} checked={tag.checked} />
+                                    <input id={tag.name + index} name={tag.name} type="checkbox" className={props.inputClassName || ""} onChange={() => { taggingWord(tag) }} checked={tag.checked} />
                                     {tag.name}
                                 </label>)
                         }

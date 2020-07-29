@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DefaultToolTip = styled.div`
+const CustomtoolTip = styled.div`
 margin-bottom: 5px;
 padding: 10px;
 width: 80px;
@@ -36,9 +36,9 @@ line-height: 1.2;
 
 function CustomTooltip(props) {
     return (
-        <DefaultToolTip>
+        <CustomtoolTip>
             {props.children}
-        </DefaultToolTip>
+        </CustomtoolTip>
     )
 }
 

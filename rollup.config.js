@@ -4,10 +4,10 @@ import pkg from "./package.json";
 const external = id => !id.startsWith("/") && !id.startsWith(".");
 
 export default {
-    input: "./src/component/TagEditor.jsx",
+    input: "./src/index.js",
     output: {
         file: pkg.main,  
-        format: "cjs",   
+        format: "cjs",
     },
     plugins: [
         babel({ runtimeHelpers: true }),
