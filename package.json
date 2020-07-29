@@ -9,6 +9,7 @@
     "url": "https://github.com/sudalqueen/WordTagger"
   },
   "author": "sudalqueen",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
