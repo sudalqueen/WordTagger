@@ -40,7 +40,7 @@ When you drag the word you want to tag in Tag Editor, the tag tooltip appears at
 ## API
 
 | Property | Description | Type |
-|--|--|--|--|
+|--|--|--|
 | value | Sentence to tag | String |
 | tags | Information about tags. It should be of type json and should have the below structure. | Json[] |
 | onChange(info) | A function that delivers information about the tagged word whenever a tag event occurs at the value value. It is delivered according to the structure of info below. | Function |
