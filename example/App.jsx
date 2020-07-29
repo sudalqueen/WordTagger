@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
+import TagEditor from '../src/component/TagEditor.jsx';
+import CustomTooltip from './CustomToolTip.jsx';
 import './App.css';
-import TagEditor from './component/TagEditor';
-import CustomTooltip from './component/Tooltip/CustomToolTip'
 
 function App() {
   const map = new Map();
@@ -12,8 +14,10 @@ function App() {
   ]
 
   const tags2 = [
-    { name: "Fruits" },
-    { name: "Nothing!" }
+    { name: "Fruits",
+      color: "lightblue" },
+    { name: "Nothing!",
+      color: "lightpink" }
   ]
 
   function onChange(info) {
@@ -47,4 +51,9 @@ function App() {
   );
 }
 
-export default App;
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
