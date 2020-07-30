@@ -3,7 +3,9 @@
 This is React Tag Editor for Tagging words. You can visually check and edit the tagging of words, and receive tagged information.
 When you drag the word you want to tag in Tag Editor, the tag tooltip appears at the below, and when you select the tag, the word is tagged.
 
-![img](./img/tagEditor.png)
+<p align="center">
+  <img src="https://github.com/sudalqueen/WordTagger/blob/master/img/tagEditor.png">
+</p>
 
 ## Installation
 
